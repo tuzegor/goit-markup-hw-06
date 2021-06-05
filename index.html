@@ -390,6 +390,43 @@
                     <use href="./images/sprite.svg#icon-close-button" ></use>
                 </svg>
             </button>
+            <form class="modal-form">
+                <p class="modal-title">Оставьте свои данные, мы вам перезвоним</p>
+                <label class="modal-field"> Имя
+                    <span class="modal-input-wrapper">
+                        <input class="modal-input" type="text" name="user-name" minlength="2" required>
+                        <svg class="modal-icon" width="18" height="18">
+                            <use href="./images/sprite.svg#icon-person-black"></use>
+                        </svg>
+                    </span>
+                </label>
+                <label class="modal-field"> Телефон
+                    <span class="modal-input-wrapper">
+                        <input class="modal-input" type="tel" name="user-tel" required>
+                        <svg class="modal-icon" width="18" height="18">
+                            <use href="./images/sprite.svg#icon-phone-black"></use>
+                        </svg>
+                    </span>
+                </label>
+                <label class="modal-field"> Почта
+                    <span class="modal-input-wrapper">
+                        <input class="modal-input" type="email" name="user-email" required>
+                        <svg class="modal-icon" width="18" height="18">
+                            <use href="./images/sprite.svg#icon-email-black"></use>
+                        </svg>
+                    </span>
+                </label>
+                <label class="modal-message-field"> Комментарий
+                    <textarea class="modal-form-message" name="user-message"  placeholder="Введите текст"></textarea>
+                </label>
+                <div class="modal-checkbox-container">
+                    <input type="checkbox" name="user-policy" id="checkbox-policy" required class="modal-checkbox visually-hidden">
+                    <label for="checkbox-policy" class="modal-checkbox-policy">Соглашаюсь с рассылкой и принимаю <a class="modal-policy-link" href="">Условия
+                        договора</a></label>
+                </div>
+
+                <button class="modal-form-button" type="submit">Отправить</button>
+            </form>
         </div>
     </div>
     <script src="./js/modal.js"></script>

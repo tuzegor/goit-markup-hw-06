@@ -42,6 +42,17 @@ body {
   font-size: 14px;
   letter-spacing: 0.03em;
 }
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
 /* =======COMPONENTS======= */
 
 .container {
@@ -480,6 +491,8 @@ a.active-page {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-subscribe-field:focus {
   outline: none;
@@ -562,6 +575,7 @@ a.active-page {
   transform: translate(-50%, -50%) scale(1);
   width: 528px;
   height: 581px;
+  padding: 40px;
 
   background-color: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -588,7 +602,165 @@ a.active-page {
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.close-button:hover,
+.close-button:focus {
+  fill: var(--accent-color);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.modal-field {
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+
+  color: #757575;
+}
+
+.modal-input-wrapper {
+  position: relative;
+  display: block;
+  margin-top: 4px;
+}
+
+.modal-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-left: 42px;
+
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-input:focus,
+.modal-form-message:focus {
+  outline: none;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+}
+.modal-input:focus + .modal-icon {
+  fill: var(--accent-color);
+}
+
+.modal-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  display: block;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-message-field {
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+
+  color: #757575;
+  margin-bottom: 20px;
+}
+
+.modal-form-message {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-top: 4px;
+
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-message::placeholder {
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+.modal-checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-checkbox-policy::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 16px;
+  height: 15px;
+  background-image: url(../images/svg/empty-check.svg);
+
+  margin-right: 9px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-checkbox:checked + .modal-checkbox-policy::before {
+  background-image: url(..//images/svg/check.svg);
+}
+.modal-checkbox:focus + .modal-checkbox-policy::before {
+  box-shadow: 0 0 1px 1px var(--accent-color);
+}
+
+.modal-checkbox-policy {
+  line-height: 1.7;
+  color: #757575;
+}
+.modal-policy-link {
+  color: var(--accent-color);
+
+  transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-policy-link:focus {
+  outline-color: var(--accent-color);
+}
+.modal-form-button {
+  align-self: center;
+  width: 200px;
+  height: 50px;
+  padding: 10px 55px;
+  margin-top: 30px;
+
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: center;
+  letter-spacing: 0.06em;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-button:hover,
+.modal-form-button:focus {
+  background-color: #188ce8;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
 /* =========END MODAL WINDOW========= */
 
 /* =========PORTFOLIO PAGE========= */
@@ -625,7 +797,7 @@ a.active-page {
 
 .filter-button:hover,
 .filter-button:focus {
-  background-color: #2196f3;
+  background-color: var(--accent-color);
   color: #fff;
   cursor: pointer;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
